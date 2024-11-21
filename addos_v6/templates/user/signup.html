@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Signup Page">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/formgroup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body class="is-preload">
+
+    <!-- 배경화면 추가 -->
+    <div id="bg">
+        <div class="bg-image image1 visible"></div>
+        <div class="bg-image image2"></div>
+        <div class="bg-image image3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section id="signup-section" class="special">
+            <h2>회원가입</h2>
+
+            <form id="signup-form" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">이메일</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.nickname.id_for_label }}">닉네임</label>
+                    {{ form.nickname }}
+                    {{ form.nickname.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.ip_address.id_for_label }}">IP 주소</label>
+                    {{ form.ip_address }}
+                    {{ form.ip_address.errors }}
+                </div>
+
+                <div class="form-group tooltip">
+                    <label for="{{ form.password1.id_for_label }}">비밀번호</label>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                    <span class="tooltiptext">
+                        <strong>비밀번호 유의사항:</strong><br>
+                        - 최소 8자 이상<br>
+                        - 숫자 포함<br>
+                        - 특수문자 포함<br>
+                        - 대문자와 소문자 혼용
+                    </span>
+                </div>
+
+                <div class="form-group tooltip">
+                    <label for="{{ form.password2.id_for_label }}">비밀번호 확인</label>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                    <span class="tooltiptext">
+                        비밀번호를 정확히 입력해주세요.
+                    </span>
+                </div>
+
+                <input type="submit" value="회원가입" class="button">
+            </form>
+
+            <p class="home-link"><a href="{% url 'user:login' %}">이미 계정이 있으신가요?</a></p>
+            <p class="home-link"><a href="{% url 'home:index' %}">홈으로 돌아가기</a></p>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aDDoS</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/morris-0.4.3.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/graph.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <a href="{% url 'home:index' %}" class="logo-link">
+          <img
+            src="{% static 'img/addos_logo.svg' %}"
+            alt="로고"
+            class="logo"
+          />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#" name="profile">프로필</a></li>
+            <li>
+              <a href="{% url 'mypage:traffic' %}" name="traffic"
+                >트래픽 분석</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'mypage:suricata' %}" name="suricata">수리카타</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li><span>환영합니다, {{ user.nickname }}님!</span></li>
+          <li><a href="#" name="notice">공지사항</a></li>
+          <li><a href="{% url 'user:logout' %}" name="logout">로그아웃</a></li>
+          {% else %}
+          <li><a href="#" name="notice">공지사항</a></li>
+          <li><a href="{% url 'user:login' %}">로그인</a></li>
+          <li>/</li>
+          <li><a href="{% url 'user:signup' %}">회원가입</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- 메인 콘텐츠 -->
+      <main id="main-content">
+        <h1>Traffic Analysis</h1>
+        <!-- 대시보드 카드 추가-->
+        <div class="dashboard-cards">
+          <div class="card">
+            <i class="material-icons">network_check</i>
+            <div class="card-content">
+              <div class="card-value">{{ total_traffic }}</div>
+              <div class="card-label">총 트래픽</div>
+            </div>
+          </div>
+          <div class="card">
+            <i class="material-icons">memory</i>
+            <div class="card-content">
+              <div class="card-value">{{ avg_packet_size }}</div>
+              <div class="card-label">평균 패킷 크기</div>
+            </div>
+          </div>
+          <div class="card">
+            <i class="material-icons">error_outline</i>
+            <div class="card-content">
+              <div class="card-value">{{ abnormal_sessions }}</div>
+              <div class="card-label">비정상 세션 수</div>
+            </div>
+          </div>
+          <div class="card">
+            <i class="material-icons">router</i>
+            <div class="card-content">
+              <div class="card-value">{{ top_src_ip }}</div>
+              <div class="card-label">가장 많은 트래픽 발생 IP</div>
+            </div>
+          </div>
+        </div>
+        <!-- 대시보드 카드 추가 여기까지-->
+        <!-- traffic graph -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="card-action">
+              <h2>트래픽 그래프</h2>
+            </div>
+            <div class="card-content">
+              <div id="morris-area-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="card">
+                <div class="card-action">
+                  <h2>프로토콜 그래프</h2>
+                </div>
+                <div class="card-content">
+                  <div id="morris-line-chart"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <div class="card">
+                <div class="card-action">
+                  <h2>프로토콜 비율</h2>
+                </div>
+                <div class="card-content">
+                  <div id="morris-donut-chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 추천 Suricata 규칙 섹션 추가 -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+            <div class="card-action">
+              <h2>추천 Suricata 규칙</h2>
+            </div>
+            <div class="card-content recommended-rules">
+              {% if suricata_rules %}
+              <ul>
+                {% for rule in suricata_rules %}
+                <li>
+                  <strong>{{ rule.name }}</strong>: {{ rule.description }}
+                  <pre><code>{{ rule.content }}</code></pre>
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <p>현재 추천할 규칙이 없습니다.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- 추천 Suricata 규칙 섹션 추가 여기까지 -->
+      </main>
+    </div>
+    <!-- 자바스크립트 파일 -->
+    <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'js/raphael-2.1.0.min.js' %}"></script>
+    <script src="{% static 'js/morris.js' %}"></script>
+    <script>
+      // data.py에서 전달한 데이터를 JSON 형식으로 변환
+      var rawData = JSON.parse('{{ traffic_data|safe }}');
+    </script>
+    <script src="{% static 'js/graph.js' %}"></script>
+  </body>
+</html>

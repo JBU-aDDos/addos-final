@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aDDoS</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/suricata.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <a href="{% url 'home:index' %}" class="logo-link">
+          <img
+            src="{% static 'img/addos_logo.svg' %}"
+            alt="로고"
+            class="logo"
+          />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#" name="profile">프로필</a></li>
+            <li>
+              <a href="{% url 'mypage:traffic' %}" name="traffic"
+                >트래픽 분석</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'mypage:suricata' %}" name="rule-apply"
+                >수리카타</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li><span>환영합니다, {{ user.nickname }}님!</span></li>
+          <li><a href="#" name="notice">공지사항</a></li>
+          <li><a href="{% url 'user:logout' %}" name="logout">로그아웃</a></li>
+          {% else %}
+          <li><a href="#" name="notice">공지사항</a></li>
+          <li><a href="{% url 'user:login' %}">로그인</a></li>
+          <li>/</li>
+          <li><a href="{% url 'user:signup' %}">회원가입</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- 메인 콘텐츠 -->
+      <main id="main-content">
+        <h1>Suricata Rule</h1>
+        <!-- 룰 입력 섹션 -->
+        <section>
+          <h2>수리카타 규칙 입력</h2>
+          <textarea id="rule-input" rows="10" cols="50"></textarea>
+          <button id="save-rule" name="save-rule">제출하기</button>
+        </section>
+
+        <!-- 적용중인 룰 섹션 -->
+        <h1>Server Rule</h1>
+        <section>
+          <h2>서버 규칙</h2>
+          <textarea id="current-rules" rows="10" cols="50" readonly></textarea>
+          <div id="applied-rules">
+            <!-- 여기에 현재 적용 중인 룰이 표시 -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{% static 'js/suricata.js'%}"></script>
+  </body>
+</html>

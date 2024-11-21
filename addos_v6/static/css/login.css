@@ -1,0 +1,112 @@
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 로그인 페이지 전용 스타일 */
+#login-section {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 제목 스타일 */
+#login-section h2 {
+  font-size: 2.5em; /* 제목 크기를 조금 더 키움 */
+  color: #ffffff; /* 제목 색상 */
+  margin-bottom: 20px; /* 아래 마진 */
+  text-align: center; /* 가운데 정렬 */
+}
+
+/* 로그인 폼 전용 설정 */
+#login-form {
+  width: 100%;
+  max-width: 500px; /* 폼의 최대 너비 */
+  background: #242424; /* 어두운 폼 배경색 */
+  padding: 2rem; /* 내부 여백 조정 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  color: #ffffff;
+  overflow: hidden; /* 내용을 넘치는 부분 숨김 */
+}
+
+/* 각 입력 필드 스타일 */
+#login-form .form-group {
+  margin-bottom: 20px;
+}
+
+#login-form .form-group label {
+  display: block;
+  margin-bottom: 5px; /* 마진 감소 */
+  font-weight: bold;
+  color: #cccccc; /* 레이블 색상 */
+}
+
+#login-form .form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem; /* 패딩 조정 */
+  border: 1px solid #333;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #2a2a2a; /* 어두운 입력 필드 배경 */
+  transition: border-color 0.3s, background-color 0.3s; /* 부드러운 효과 */
+}
+
+#login-form .form-group input:focus {
+  border-color: #4a90e2; /* 포커스 시 파란색 */
+  background-color: #333; /* 포커스 시 어두운 배경 */
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* 파란색 강조 */
+}
+
+/* 로그인 버튼 전용 스타일 */
+#login-form input[type='submit'] {
+  background-color: #376b43; /* 초록색 로그인 버튼 */
+  color: #ffffff;
+  border: none;
+  margin-top: 10px; /* 상단 여백 추가 */
+  padding: 0.2rem 1rem; /* Increased padding for a better touch target */
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+}
+
+#login-form input[type='submit']:hover {
+  background-color: #218838;
+  transform: translateY(-2px); /* Elevate button on hover */
+}
+
+#login-form input[type='submit']:active {
+  background-color: #1e7e34;
+  transform: translateY(0); /* Reset button position on click */
+}
+
+/* 링크 스타일 */
+.home-link {
+  margin-top: 2px;
+  text-align: center;
+  margin-bottom: 30px; /* 아래 마진 추가 */
+}
+
+.home-link a {
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.home-link a:hover {
+  color: #06580d;
+}

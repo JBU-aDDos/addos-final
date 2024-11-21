@@ -1,0 +1,162 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+}
+
+/* 헤더 스타일 */
+header {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  height: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  margin-right: 30px; /* 로고와 메뉴 사이의 간격 */
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Hover 스타일 */
+header nav ul li a:hover {
+  color: #000000; /* 마우스를 올렸을 때의 색상 */
+}
+
+/* 메인 컨테이너 스타일 */
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px; /* 헤더와 콘텐츠 사이의 여백 */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 메인 콘텐츠 스타일 */
+#main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px; /* 메인 콘텐츠 모서리 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 메인 콘텐츠 그림자 추가 */
+  padding: 20px; /* 콘텐츠 안쪽 여백 */
+  transition: box-shadow 0.3s ease; /* 그림자 전환 애니메이션 */
+}
+
+/* 메인 콘텐츠 Hover 시 그림자 강조 */
+#main-content:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hover 시 더 진한 그림자 */
+}
+
+/* h1 스타일 - 텍스트 그림자 추가 */
+#main-content h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 추가 */
+}
+
+/* 섹션 스타일 - 강화된 그림자 */
+section {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 섹션에 더 진한 그림자 추가 */
+  transition: box-shadow 0.3s ease; /* 그림자 전환 애니메이션 */
+}
+
+/* 섹션 Hover 시 그림자 강조 */
+section:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Hover 시 그림자 더 진하게 */
+}
+
+section h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #c0392b;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  header {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  .container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  #main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

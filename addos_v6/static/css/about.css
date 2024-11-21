@@ -1,0 +1,122 @@
+.container {
+  margin-top: 5em;
+}
+/* 그리드 레이아웃 설정 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+  gap: 1.5em; /* 그리드 아이템 간 간격 */
+  margin-top: 2em; /* 상단 여백 */
+}
+
+/* 카드 스타일링 */
+.card {
+  background-color: transparent; /* 투명한 배경색 */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* 흰색 반투명 테두리 */
+  border-radius: 8px; /* 모서리 라운드 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 시 애니메이션 효과 */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* 카드 위로 살짝 이동 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
+}
+
+/* 카드 헤더 스타일링 */
+.card-header {
+  padding: 1em; /* 내부 여백 */
+  cursor: pointer; /* 커서를 포인터로 변경 */
+  position: relative; /* 상대 위치 지정 */
+  display: flex; /* 플렉스 레이아웃 사용 */
+  justify-content: space-between; /* 공간을 양쪽으로 분배 */
+  align-items: center; /* 수직 중앙 정렬 */
+  background-color: rgba(172, 198, 192, 0.512); /* 반투명 배경색 */
+  color: #fff; /* 텍스트 색상 흰색 */
+}
+
+.card-header h2 {
+  margin: 0; /* 여백 제거 */
+  font-size: 1.25em; /* 폰트 크기 설정 */
+}
+
+.toggle-icon {
+  font-size: 1.5em; /* 아이콘 크기 */
+  transition: transform 0.3s ease; /* 회전 애니메이션 */
+}
+
+/* 활성화된 토글 아이콘 회전 */
+.card-header.active .toggle-icon {
+  transform: rotate(45deg); /* 45도 회전 */
+}
+
+/* 카드 내용 스타일링 */
+.card-content {
+  padding: 1em; /* 내부 여백 */
+  display: none; /* 기본적으로 숨김 */
+  color: rgba(255, 255, 255, 0.9); /* 텍스트 색상 약간 투명 */
+}
+
+.card-content p {
+  margin: 0; /* 단락 여백 제거 */
+}
+
+/* 활성화된 카드 내용 표시 */
+.card-content.active {
+  display: block; /* 표시 */
+  animation: fadeIn 0.3s ease; /* 서서히 나타나는 애니메이션 */
+}
+
+/* 페이드 인 애니메이션 정의 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 홈으로 돌아가기 링크 스타일링 */
+.return-home {
+  margin-top: 2em; /* 상단 여백 */
+  text-align: center; /* 중앙 정렬 */
+}
+
+.return-home a {
+  color: #ffffff; /* 텍스트 색상 흰색 */
+  font-size: 1em; /* 폰트 크기 */
+  text-decoration: none; /* 밑줄 제거 */
+  border-bottom: dotted 1px rgba(255, 255, 255, 0.25); /* 점선 밑줄 */
+  transition: color 0.2s ease, border-bottom-color 0.2s ease; /* 호버 시 전환 효과 */
+}
+
+.return-home a:hover {
+  color: #1cb495 !important; /* 호버 시 민트색으로 변경 */
+  border-bottom-color: transparent; /* 밑줄 투명 처리 */
+}
+
+.card-content form button {
+  background-color: #1cb495; /* 버튼 배경색 민트 */
+  color: #ffffff; /* 버튼 텍스트 색상 흰색 */
+  border: none; /* 테두리 제거 */
+  padding: 0.5em 1em; /* 내부 여백 */
+  margin-right: 0.5em; /* 오른쪽 여백 */
+  border-radius: 4px; /* 모서리 라운드 */
+  cursor: pointer; /* 커서를 포인터로 변경 */
+  transition: background-color 0.2s ease; /* 호버 시 배경색 전환 */
+  text-align: center; /* 버튼 텍스트 중앙 정렬 */
+}
+
+.card-content form button:hover {
+  background-color: #17a388; /* 호버 시 진한 민트색으로 변경 */
+}
+
+/* 마지막 버튼의 특정 스타일링 제거 */
+/* .card-content form button:last-child {
+    background-color: #1cb495;
+    color: #ffffff;
+}
+
+.card-content form button:last-child:hover {
+    background-color: #17a388;
+} */

@@ -1,0 +1,253 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+}
+
+/* 헤더 스타일 */
+header {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  height: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  margin-right: 30px; /* 로고와 메뉴 사이의 간격 */
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease; /* 색상 변화에 부드러운 전환 추가 */
+}
+
+/* Hover 스타일 */
+header nav ul li a:hover {
+  color: #000000; /* 마우스를 올렸을 때의 색상 */
+}
+
+/* 로고와 메뉴를 헤더 왼쪽에 함께 배치 */
+.header-left nav ul {
+  display: flex;
+  margin: 0;
+  padding-left: 15px; /* 로고와 메뉴 간의 여백 */
+}
+
+.header-left nav ul li {
+  margin-left: 15px; /* 각 메뉴 항목 간의 간격 */
+}
+
+/* 공지사항 및 로그아웃 메뉴 */
+header > nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header > nav ul li {
+  margin-left: 20px;
+}
+
+header > nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease; /* 부드러운 전환 */
+}
+
+/* 컨테이너 스타일 */
+.container {
+  display: flex;
+  margin-top: 60px;
+}
+
+/* 메인 콘텐츠 스타일 */
+#main-content {
+  flex-grow: 1;
+  padding: 20px 30px 40px;
+}
+
+/* h1 스타일 - 텍스트 그림자 추가 */
+#main-content h1 {
+  color: #2c3e50;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 추가 */
+}
+
+/* h2 스타일 - 텍스트 그림자 추가 */
+.card-action h2 {
+  color: #2c3e50;
+  margin-left: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* h2에 그림자 추가 */
+}
+
+/* svg 스타일 - 그림자 추가 */
+svg {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* svg 그림자 */
+}
+
+/* 카드 스타일 - 그림자 추가 */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: white; /* 카드의 배경을 흰색으로 설정 */
+  border-radius: 5px; /* 카드의 모서리를 둥글게 설정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 추가 */
+  padding: 20px;
+  transition: box-shadow 0.3s ease; /* 그림자 애니메이션 추가 */
+}
+
+/* Hover 시 그림자 강조 */
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hover 시 그림자 더 강조 */
+}
+
+/* 전체 카드 영역을 가로로 정렬 */
+.row {
+  display: flex;
+}
+
+/* 프로토콜 그래프와 빈도수 그래프 비율 조정 */
+#main-content .col-md-8 {
+  flex: 0 0 66.67%;
+}
+
+#main-content .col-md-4 {
+  flex: 0 0 33.33%;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  header {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  .container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  #main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+#morris-area-chart, #morris-line-chart, #morris-donut-chart {
+  height: 300px;
+}
+
+/* 대시보드 카드 스타일 추가*/
+.dashboard-cards {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f7fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.dashboard-cards .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 246.75px;
+  height: 110.67px;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+.dashboard-cards .card:nth-child(1) { background-color: #FF5252; }
+.dashboard-cards .card:nth-child(2) { background-color: #FFA726; }
+.dashboard-cards .card:nth-child(3) { background-color: #42A5F5; }
+.dashboard-cards .card:nth-child(4) { background-color: #66BB6A; }
+
+.dashboard-cards .material-icons {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.dashboard-cards .card-content {
+  text-align: center;
+}
+
+.dashboard-cards .card-value {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.dashboard-cards .card-label {
+  font-size: 16px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/* 추천 Suricata 규칙 스타일 추가 */
+.recommended-rules {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  margin-top: 20px; 
+}
+
+.recommended-rules ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recommended-rules li {
+  margin-bottom: 10px;
+}
+
+.recommended-rules pre {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 4px;
+}

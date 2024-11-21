@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <title>About Us - aDDoS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="About Us 페이지">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/about.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    </head>
+    <body class="is-preload">
+
+        <!-- 배경화면 추가 -->
+        <div id="bg">
+            <div class="bg-image image1 visible"></div>
+            <div class="bg-image image2"></div>
+            <div class="bg-image image3"></div>
+        </div>
+        
+        <!-- 메인 콘텐츠 -->
+        <div class="container">
+            <h1>About Us</h1>
+            
+            <!-- 그리드 카드 -->
+            <div class="grid">
+                <!-- 프로젝트 동기 카드 -->
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="content1">
+                        <h2>프로젝트 동기</h2>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div id="content1" class="card-content">
+                        <p>2023년 말부터 올해 초까지 큰 이슈가 되었던 국내 리그오브레전드 대회(LCK)의 <br>사이버 테러 사건을 보며, 네트워크 공격 탐지와 관련된 
+                            프로젝트를 진행하면 <br> 흥미롭겠다고 생각하여 이번 주제를 선택했습니다.</p>
+                    </div>
+                </div>
+                
+                <!-- 프로젝트 소개 카드 -->
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="content2">
+                        <h2>프로젝트 소개</h2>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div id="content2" class="card-content">
+                        <p>aDDoS는 ELK, Kafka, Python, Django를 활용한 포괄적인 트래픽 탐지 서비스로, <br>트래픽 모니터링과 프로토콜 분석, Suricata 룰 수정 및 적용을 지원합니다.</p>
+                    </div>
+                </div>
+                
+                <!-- 실습 진행 방법 카드 -->
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="content3">
+                        <h2>실습 진행 방법</h2>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div id="content3" class="card-content">
+                        <p>모의 공격을 칼리 리눅스를 통해 진행합니다. 자세한 내용은 <a href="https://necessary-loganberry-a85.notion.site/aDDoS-12927199459f8054ace8c6a565d278ce?pvs=4" target="_blank">노션 페이지</a>를 참고하세요.</p>
+                    </div>
+                </div>
+                
+                <!-- 이메일 구독 카드 -->
+                <div class="card">
+                    <div class="card-header" onclick="toggleCard(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="content4">
+                        <h2>이메일 구독</h2>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div id="content4" class="card-content">
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        <p>아래의 이메일 폼에 이메일을 입력하시면 세팅 스크립트가 포함된 메일이 발송됩니다.<br> 메일을 받으신 후 스크립트를 실행하시면 됩니다.</p>
+                        <br>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <br>
+                            <button type="submit">구독하기</button>
+                            <!-- <button type="button" onclick="location.href='/'">홈으로 돌아가기</button> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 홈으로 돌아가기 링크 -->
+            <div class="return-home">
+                <a href="{% url 'home:index' %}">홈으로 돌아가기</a>
+            </div>
+        </div>
+
+        <!-- 스크립트 파일 로드 -->
+        <script src="{% static 'js/main.js' %}" defer></script>
+        <script src="{% static 'js/about.js' %}" defer></script>
+    </body>
+</html>

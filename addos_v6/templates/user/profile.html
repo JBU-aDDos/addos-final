@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Profile</h2>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Nickname: {{ user.nickname }}</p>
+    <p>IP Address: {{ user.ip_address }}</p>
+    <a href="{% url 'user:logout' %}">Logout</a>
+</body>
+</html>
